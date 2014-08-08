@@ -37,7 +37,7 @@ def load(filename):
         filename : str
             The path to the saved module.
     """
-    return pickle.load(open(load_file, 'rb'))
+    return pickle.load(open(filename, 'rb'))
 
 class Module:
     """
@@ -630,3 +630,12 @@ class Softmax(Activation):
         Computes the softmax function :math:`\mathbf{\hat{y}} = [exp(x_i)/\sum_{i=1}^n exp(x_i)]_{i=1}^n`
         """
         self.outputs = T.nnet.softmax(self.inputs)
+        
+class Word2Vec(Activation):
+    """
+    Word2vec takes a corpus and builds vector-space respresentations
+    for text. Here a corpus will be built and saved for further use and calling
+    this activation will give you the 200 dimmensional vector given from the
+    word the user wishes to transform
+    """
+    
